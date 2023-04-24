@@ -88,6 +88,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+
 }
 
 article,
@@ -317,7 +318,7 @@ header.major h2 {
 
 .im-g{
 	height: 30vh !important;
-	max-width: 500px;
+	max-width: fit-content;
 	
 }
 
@@ -680,6 +681,9 @@ ul.icons li .icon:before {
     font-size: 1em;
   }
 
+  img{
+    max-width: 100px;
+  }
   /* Section/Article */
 
   section.special,
@@ -743,4 +747,8 @@ ul.icons li .icon:before {
 
 .project span a{
   margin-right: 5px;
+}
+
+img{
+  width: 400px;
 }
