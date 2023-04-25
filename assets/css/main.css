@@ -337,7 +337,7 @@ ol li {
 ul {
   list-style: disc;
   margin: 0 0 2em;
-  padding-left: 1em;
+  
 }
 ul li {
   padding-left: 0.5em;
@@ -533,21 +533,17 @@ ul.icons li {
     font-size: 1em;
   }
   img {
-    max-width: 100px;
+    max-width: fit-content ;
   }
-  section.special,
-  article.special {
-    text-align: center;
-  }
+  
   header.major h2 {
     font-size: 1.35em;
   }
   #header {
     padding: 2.25em 1.5em;
+    width: 100% !important;
   }
-  #header h1 {
-    font-size: 1.35em;
-  }
+  
   #footer {
     padding: 2.25em 1.5em;
   }
@@ -561,15 +557,13 @@ ul.icons li {
 }
 @media screen and (max-width: 480px) {
   #header {
-    padding: 4.5em 1.5em;
+    padding: 2em 1em;
   }
   #header h1 br {
     display: none;
   }
 }
-.project span a {
-  margin-right: 5px;
-}
+
 img {
   width: 400px;
 }
