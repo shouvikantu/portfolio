@@ -87,6 +87,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  
 }
 article,
 aside,
@@ -103,6 +104,7 @@ section {
 }
 body {
   line-height: 1;
+
 }
 ol,
 ul {
@@ -269,10 +271,10 @@ header.major h2 {
 .project {
   padding: 10px;
 }
-.im-g {
+/* .im-g {
   height: 30vh !important;
   max-width: fit-content;
-}
+} */
 .image {
   border-radius: 0.35em;
   border: 0;
@@ -532,11 +534,9 @@ ul.icons li {
   h3 {
     font-size: 1em;
   }
-  img {
-    max-width: fit-content ;
-  }
+ 
   
-  header.major h2 {
+   header.major h2 {
     font-size: 1.35em;
   }
   #header {
@@ -546,14 +546,14 @@ ul.icons li {
   
   #footer {
     padding: 2.25em 1.5em;
-  }
+  } 
   #main {
     padding: 2.25em 1.5em 0.25em;
-  }
-  #main > section {
+  } 
+   #main > section {
     margin: 2.25em 0 0;
     padding: 2.25em 0 0;
-  }
+  } 
 }
 @media screen and (max-width: 480px) {
   #header {
@@ -562,11 +562,12 @@ ul.icons li {
   #header h1 br {
     display: none;
   }
+  #main{
+    padding: none !important;
+  }
 }
 
-img {
-  width: 400px;
-}
+
 .actions li {
   display: inline-block;
   border: 1px solid #8e5307;
@@ -584,4 +585,38 @@ img {
 }
 .actions li a:hover {
   text-decoration: overline !important;
+}
+html{
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 480px) {
+  .im-g {
+    width: 300px;
+    max-width: fit-content;
+  }
+  p{
+    font-size: 16px !important;
+  }
+  
+}
+@media screen and (min-width: 480px) {
+  .im-g {
+    width: 400px ;
+    max-width: fit-content;
+  }
+  p{
+    font-size: 1.1rem !important;
+  }
+}
+
+.im-g{
+  width: 80% !important;
+}
+.project p{
+  font-size: 1.2rem;
+
+}
+#one p{
+  font-size: 1.2rem !important;; 
 }
