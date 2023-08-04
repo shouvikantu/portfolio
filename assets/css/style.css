@@ -11682,3 +11682,23 @@ pre .code {
   display: block;
   margin-top: 10px;
 }
+
+
+.web-link{
+  color: black !important;
+  position: absolute;
+  bottom: 5px;
+  font-size: larger;
+  padding: 2px;
+  
+}
+
+.web-link a{
+  color: white !important;
+  padding: 4px;
+}
+
+.web-link a:hover{
+  color: white;
+  text-decoration: underline;
+}
