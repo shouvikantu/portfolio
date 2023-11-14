@@ -11702,3 +11702,47 @@ pre .code {
   color: white;
   text-decoration: underline;
 }
+
+.about-card-new {
+  background-color: #fbdecf; /* Light grey background */
+  border: 1px solid #e1e1e1; /* Slightly darker border for definition */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 20px; /* Some padding inside the card */
+/* Space below the card */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.about-card-new h3 {
+  color: #333; /* Darker color for the heading */
+  margin-bottom: 15px; /* Space below the heading */
+}
+
+.about-card-new .line {
+  background-color: #e07a5f; /* A distinct color for the line */
+  height: 3px; /* Thickness of the line */
+  width: 50px; /* Width of the line */
+  display: block; /* Ensures the line is on its own line */
+  margin-bottom: 15px; /* Space below the line */
+}
+
+.about-card-new .row {
+  margin-bottom: 15px; /* Space between each row */
+}
+
+.about-card-new .icon-lg {
+  font-size: 1.5em; /* Larger icons */
+}
+
+.about-card-new a {
+  text-decoration: none; /* No underline for links */
+  
+}
+
+.about-card-new a:hover {
+  text-decoration: underline; /* Underline on hover for links */
+}
+
+.about-card-new hr {
+  margin-top: 10px; /* Space above the horizontal rule */
+  margin-bottom: 10px; /* Space below the horizontal rule */
+}
