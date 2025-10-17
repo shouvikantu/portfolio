@@ -81,6 +81,11 @@
       border-radius: 6px;
     }
 
+    /* Fixed-size aligned images used in some slides */
+    .slide-image-row{ display:flex; gap:var(--space-2); align-items:center; justify-content:center; margin: var(--space-2) 0; }
+    .slide-image-row img.fixed-image{ display:block; width:260px; height:180px; object-fit:cover; border:4px solid var(--wu-gold); border-radius:6px; box-shadow:0 8px 20px rgba(0,0,0,.12);} 
+
+  /* Small image variant for visual anchor slides */
     /* Code blocks: slightly larger and roomier */
     .reveal pre code{ font-size: clamp(0.9rem, 2.0vw, 1.2rem); line-height: 1.5; }
     code.small{ font-size: clamp(0.9rem, 1.8vw, 1.05rem); }
@@ -89,206 +94,86 @@
 <body>
   <div class="reveal">
     <div class="slides">
-
-      <!-- Title -->
-      <section>
-        <h1>Engaging with the Wiphala</h1>
-        <h3>A Code-Generation Hardened CS1 Final</h3>
-        <p>Calvin Deutschbein · Shouvik Ahmed Antu — Willamette University</p>
-        <p class="timebox">20-minute talk · Q&amp;A included</p>
-        <aside class="notes">
-          Welcome, brief context: CS151 in Python, classic Nifty assignments now easily solved by LLMs. We designed a final that keeps ACM CS1 learning outcomes while productively engaging with AI.
-        </aside>
-      </section>
-
-	  <!-- Question -->
-	  <section>
-        <h2>Q&amp;A</h2>
-        <p>What would it take for your final to survive a GPT prompt?</p>
-        <aside class="notes">Seed discussion. Offer to share rubric and milestone text.</aside>
-      </section>
-	  
-      <!-- Motivation -->
-      <section>
-        <h2>Why redesign CS1 assessment?</h2>
-        <ul>
-          <li class="fragment">LLMs produce perfect solutions to many classic assignments</li>
-          <li class="fragment">Students can bypass authentic practice and debugging</li>
-          <li class="fragment">Goal: preserve core learning + teach tool literacy</li>
-        </ul>
-        <p class="notice">Design around AI instead of banning it.</p>
-        <aside class="notes">
-          Set up the problem. Emphasize we want students to learn with tools while still building computational thinking.
-        </aside>
-      </section>
-
-      <!-- Course context -->
-      <section>
-        <h2>Course context</h2>
-        <ul>
-          <li>CS151 (Python) adapted from Stanford; Nifty assignments + ImageShop</li>
-          <li class="fragment">Primary learning via projects; milestone based</li>
-          <li class="fragment">Observed drop: scripting → multi-file programming</li>
-        </ul>
-        <aside class="notes">
-          Motivation for a cumulative, interdependent final that surfaces true understanding versus prompt engineering.
-        </aside>
-      </section>
-
-      <!-- Design Principles -->
-      <section>
-        <h2>Design principles</h2>
-        <ul>
-          <li class="fragment">Align to ACM CS1 objectives</li>
-          <li class="fragment">Leverage <em>intentional ambiguity</em></li>
-          <li class="fragment">Prefer visual / image-based specifications</li>
-          <li class="fragment">Make milestones interdependent</li>
-          <li class="fragment">Embed cultural/ethical context</li>
-        </ul>
-        <aside class="notes">
-          “Intentional ambiguity” is key: require students to design representations and make choices before coding.
-        </aside>
-      </section>
-
-      <!-- Wiphala Visual: placeholder image -->
-      <section>
-        <h2>The Wiphala (concept)</h2>
-        <!-- Replace src with your screenshot path, e.g., images/wiphala.png -->
-        <img src="wiphala.png" alt="Wiphala pattern screenshot placeholder" />
-        <aside class="notes">
-          Use the screenshot as a visual anchor. In the assignment, students generate this programmatically without naming “Wiphala.”
-        </aside>
-      </section>
-
-      <!-- Milestones overview -->
-      <section>
-        <h2>Final structure &amp; milestones</h2>
-        <ol>
-          <li>Strings &amp; Files</li>
-          <li>Interactive Graphics</li>
-          <li>Reading Python (visual spec → code)</li>
-          <li>Defining Classes (image collage)</li>
-          <li>Fundamental Python (vector ops)</li>
-        </ol>
-        <p class="timebox">~7–8 minutes total across the five pieces</p>
-      </section>
-
-      <!-- 1. Strings & Files -->
-      <section>
-        <h2>1) Strings &amp; Files</h2>
-        <ul>
-          <li>Non-standard file: Spanish color names, space-separated RGB, no headers</li>
-          <li class="fragment">Students decide representations (lists, dicts, tuples)</li>
-          <li class="fragment">LLMs can parse CSVs—this breaks assumptions via ambiguity</li>
-        </ul>
-        <pre class="fragment"><code class="language-text">rojo 219 10 19
-naranja 236 120 8
-...
-</code></pre>
-        <aside class="notes">
-          Emphasize design choices. Many valid solutions emerged, showing genuine understanding.
-        </aside>
-      </section>
-
-      <!-- 2. Interactive Graphics -->
-      <section>
-        <h2>2) Interactive Graphics</h2>
-        <ul>
-          <li>Render the Wiphala pattern via loops / slices</li>
-          <li class="fragment">Common AI error: simple diagonal, wrong cycle/offset</li>
-          <li class="fragment">We intentionally avoid naming the pattern in the prompt</li>
-        </ul>
-        <aside class="notes">Students must reason about 2D indexing and modular sequences.</aside>
-      </section>
-
-      <!-- 3. Reading Python -->
-      <section>
-        <h2>3) Reading Python (reimagined)</h2>
-        <ul>
-          <li>From tracing given code → writing code from images</li>
-          <li class="fragment">Fixed-pixel HTML prevents easy prompt-pasting of images</li>
-          <li class="fragment">Encourages structural reasoning, not rote output</li>
-        </ul>
-      </section>
-
-      <!-- 4. Defining Classes -->
-      <section>
-        <h2>4) Defining Classes → Collage</h2>
-        <ol>
-          <li>Read image files from names in CSV</li>
-          <li>Crop to square; scale uniformly</li>
-          <li>Assemble collage Wiphala</li>
-        </ol>
-        <p class="fragment">LLMs misread the inputs (random tiles vs concatenated image) → brittle.</p>
-        <aside class="notes">Multi-step dependency exposes shallow understanding and promotes pipeline thinking.</aside>
-      </section>
-
-      <!-- 5. Fundamental Python -->
-      <section>
-        <h2>5) Fundamental Python (vector ops)</h2>
-        <ul>
-          <li>Integer luminance: <code class="small">r, g, b = color; (4*g + 3*r + b)//8</code></li>
-          <li class="fragment">Map high luminance → rojo scale; low → black</li>
-          <li class="fragment">Vectorized NumPy operations, not floats</li>
-        </ul>
-        <aside class="notes">Subtle implementation details confound code-gen defaults and reinforce fundamentals.</aside>
-      </section>
-
-      <!-- Results -->
-      <section>
-        <h2>Results</h2>
-        <ul>
-          <li>Quasi-uniform final score distribution; clear differentiation</li>
-          <li class="fragment">Final <em>uncorrelated</em> with midterm/project scores (r² ≈ 0.006)</li>
-          <li class="fragment">Some high project scorers struggled to write code unaided</li>
-        </ul>
-        <aside class="notes">Balanced view: success in revealing understanding, but consider equity and preparation.
-        </aside>
-      </section>
-
-      <!-- Implications -->
-      <section>
-        <h2>Implications &amp; lessons</h2>
-        <ul>
-          <li>Design tasks that require interpretation, synthesis, judgment</li>
-          <li class="fragment">Use ambiguity + interdependent milestones</li>
-          <li class="fragment">Bring cultural context and ethics into CS1</li>
-          <li class="fragment">Prepare students with in-class practice using similar patterns</li>
-        </ul>
-      </section>
-
-      <!-- Closing -->
-      <section>
-        <h2>The big picture</h2>
-        <blockquote>
-          We don’t ban AI; we raise the bar for authentic learning.
-        </blockquote>
-        <p class="notice">Repo &amp; materials (generalized under MIT): <code>github.com/cd-public/ccscrm</code></p>
-        <aside class="notes">Invite collaboration, share materials, and welcome replication studies.</aside>
-      </section>
-
-      <!-- Q&A -->
-      
-
+      <!-- Slides will be loaded dynamically from the slides/ directory -->
     </div>
   </div>
+
 
   <script src="https://unpkg.com/reveal.js@5/dist/reveal.js"></script>
   <script src="https://unpkg.com/reveal.js@5/plugin/markdown/markdown.js"></script>
   <script src="https://unpkg.com/reveal.js@5/plugin/notes/notes.js"></script>
   <script src="https://unpkg.com/reveal.js@5/plugin/highlight/highlight.js"></script>
   <script>
-    Reveal.initialize({
-      hash: true,
-      slideNumber: true,
-      controls: true,
-      progress: true,
-      center: true,            // keep content centered
-      margin: 0.06,            // a touch more breathing room
-      minScale: 0.5,           // allow scale down on small screens
-      maxScale: 2.25,          // allow scale up on large screens
-      plugins: [ RevealMarkdown, RevealNotes, RevealHighlight ],
-    });
+    // Slide partials to load (relative to this file)
+    const slideFiles = [
+      'slides/01-title.html',
+      'slides/02-qa.html',
+      'slides/03-motivation.html',
+      'slides/04-course-context.html',
+      'slides/05-design-principles.html',
+      'slides/06-wiphala.html',
+      'slides/07-milestones.html',
+      'slides/08-strings-files.html',
+      'slides/09-interactive-graphics.html',
+      'slides/10-reading-python.html',
+      'slides/11-defining-classes.html',
+      'slides/12-fundamental-python.html',
+      'slides/13-results.html',
+      'slides/14-implications.html',
+      'slides/15-closing.html'
+    ];
+
+    // Fetch a single partial and return its text (with timeout)
+    function fetchWithTimeout(url, timeout = 5000) {
+      return new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error('timeout')) , timeout);
+        fetch(url).then(r => {
+          clearTimeout(timer);
+          if (!r.ok) reject(new Error('fetch error ' + r.status));
+          else resolve(r.text());
+        }).catch(err => { clearTimeout(timer); reject(err); });
+      });
+    }
+
+    async function loadSlides() {
+      const container = document.querySelector('.reveal .slides');
+      if (!container) return;
+      for (const file of slideFiles) {
+        try {
+          const html = await fetchWithTimeout(file, 4000);
+          const wrapper = document.createElement('div');
+          wrapper.innerHTML = html;
+          // Append each child (normally one section) to slides
+          while (wrapper.firstChild) container.appendChild(wrapper.firstChild);
+        } catch (err) {
+          console.warn('Could not load', file, err);
+          // Insert a placeholder slide so Reveal index stays consistent
+          const failed = document.createElement('section');
+          failed.innerHTML = `<h2>Missing slide</h2><p>Could not load ${file}</p>`;
+          container.appendChild(failed);
+        }
+      }
+
+      // After slides are loaded, initialize Reveal
+      Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        controls: true,
+        progress: true,
+        center: true,
+        margin: 0.06,
+        minScale: 0.5,
+        maxScale: 2.25,
+        plugins: [ RevealMarkdown, RevealNotes, RevealHighlight ],
+      });
+    }
+
+    // Load slides on DOMContentLoaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadSlides);
+    } else {
+      loadSlides();
+    }
   </script>
 </body>
 </html>
