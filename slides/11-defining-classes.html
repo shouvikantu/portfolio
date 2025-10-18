@@ -1,10 +1,23 @@
 <section>
   <h2>4) Defining Classes → Collage</h2>
-  <ol>
-    <li>Read image files from names in CSV</li>
-    <li>Crop to square; scale uniformly</li>
-    <li>Assemble collage Wiphala</li>
-  </ol>
-  <p class="fragment">LLMs misread the inputs (random tiles vs concatenated image) → brittle.</p>
-  <aside class="notes">Multi-step dependency exposes shallow understanding and promotes pipeline thinking.</aside>
+  <div class="cols">
+    <div class="fragment">
+      <ol>
+        <li>Read filenames from CSV; open as images.</li>
+        <li>Crop to square; scale uniformly.</li>
+        <li>Assemble a Wiphala-style collage (true-color).</li>
+      </ol>
+      <p class="muted">Each image selected to reflect a color’s cultural meaning (e.g., “verde” ↔ natural resources / lithium mine).</p>
+    </div>
+    <div class="fragment">
+      <ul>
+        <li><strong>AI confusion:</strong> Gemini: “5×10 grid of 50 unrelated images.”</li>
+        <li>ChatGPT: “Single image of 7 concatenated tiles; generate 10×10.”</li>
+        <li><strong>Student success factor:</strong> pipeline orchestration &amp; careful mapping from color→image tile.</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    Intentional ambiguity remains: example outputs + advice to inspect long diagonal; no pseudocode. Students who reached this step navigated fine with the earlier representations.
+  </aside>
 </section>

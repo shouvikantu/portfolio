@@ -1,15 +1,30 @@
 <section>
   <h2>1) Strings &amp; Files</h2>
-  <ul>
-    <li>Non-standard file: Spanish color names, space-separated RGB, no headers</li>
-    <li class="fragment">Students decide representations (lists, dicts, tuples)</li>
-    <li class="fragment">LLMs can parse CSVs—this breaks assumptions via ambiguity</li>
-  </ul>
-  <pre class="fragment"><code class="language-text">rojo 219 10 19
+  <div class="cols">
+    <div class="fragment">
+      <ul>
+        <li>Input: <em>space-separated</em> RGB + <em>Spanish</em> color names; <em>no headers</em>.</li>
+        <li>Students decide: lists of tuples? dicts of name→RGB? parallel arrays?</li>
+        <li>Ambiguity disrupts CSV/JSON assumptions common in LLM outputs.</li>
+      </ul>
+      <pre><code class="language-text">rojo 219 10 19
 naranja 236 120 8
-...
+amarillo 252 222 2
+blanco 255 255 255
+verde 1 138 44
+azul 6 69 177
+violeta 117 40 100
 </code></pre>
+    </div>
+    <div class="fragment">
+      <ul>
+        <li><strong>Why it works</strong>: requires <em>representation design</em>, not mere parsing.</li>
+        <li>Multiple valid solutions emerged among high scorers.</li>
+        <li>Sets up data for downstream pattern generation.</li>
+      </ul>
+    </div>
+  </div>
   <aside class="notes">
-    Emphasize design choices. Many valid solutions emerged, showing genuine understanding.
+    Early branching choices (e.g., dict keyed by Spanish names) influence later modular indexing and collage mapping.
   </aside>
 </section>

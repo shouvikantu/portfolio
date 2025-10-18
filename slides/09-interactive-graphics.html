@@ -1,9 +1,12 @@
 <section>
   <h2>2) Interactive Graphics</h2>
   <ul>
-    <li>Render the Wiphala pattern via loops / slices</li>
-    <li class="fragment">Common AI error: simple diagonal, wrong cycle/offset</li>
-    <li class="fragment">We intentionally avoid naming the pattern in the prompt</li>
+    <li>Task: reproduce pattern via loops/slices/sequence rotations.</li>
+    <li class="fragment"><strong>LLM failure mode:</strong> naive bottom-left → top-right diagonal; wrong cycle/offset.</li>
+    <li class="fragment">Avoiding the keyword “Wiphala” materially reduces AI correctness.</li>
+    <li class="fragment">Students must master 2D indexing + modulo arithmetic.</li>
   </ul>
-  <aside class="notes">Students must reason about 2D indexing and modular sequences.</aside>
+  <aside class="notes">
+    We saw a pronounced gap: students who coded actual rotations vs. those who anchored to a single diagonal. Visual check catches off-by-one errors and rotation direction mistakes.
+  </aside>
 </section>
