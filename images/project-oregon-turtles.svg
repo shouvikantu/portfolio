@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Oregon Turtles project highlight</title>
+  <desc id="desc">Stylised gradient card summarising the Oregon Turtles citizen science platform</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" rx="48"/>
+  <g fill="#ffffff" font-family="Verdana, sans-serif">
+    <text x="80" y="220" font-size="72" font-weight="600">Oregon Turtles</text>
+    <text x="80" y="320" font-size="40" opacity="0.9">Citizen science reporting for threatened species</text>
+    <text x="80" y="420" font-size="32" opacity="0.8">Next.js · Supabase · Vision-Language Models · REST APIs</text>
+    <text x="80" y="520" font-size="28" opacity="0.75">Deployed web &amp; mobile apps unify field submissions and researcher QA.</text>
+  </g>
+  <circle cx="980" cy="200" r="120" fill="rgba(255,255,255,0.12)"/>
+  <circle cx="1040" cy="420" r="90" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="920" cy="560" r="140" fill="rgba(255,255,255,0.06)"/>
+</svg>

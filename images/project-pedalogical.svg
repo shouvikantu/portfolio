@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Pedalogical research platform highlight</title>
+  <desc id="desc">Gradient card summarising the Pedalogical AI pedagogical tooling project</desc>
+  <defs>
+    <linearGradient id="pedalogical-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3730a3"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#pedalogical-bg)" rx="48"/>
+  <g fill="#f8fafc" font-family="Verdana, sans-serif">
+    <text x="80" y="220" font-size="72" font-weight="600">Pedalogical</text>
+    <text x="80" y="320" font-size="40" opacity="0.9">AI-mediated pedagogy for instructor resilience</text>
+    <text x="80" y="420" font-size="32" opacity="0.85">ASP.NET · Blazor · PostgreSQL · LangChain · RAG</text>
+    <text x="80" y="520" font-size="28" opacity="0.75">Adaptive questioning + Feynman-inspired assessments for student agency.</text>
+  </g>
+  <rect x="1000" y="160" width="80" height="80" fill="rgba(248,250,252,0.15)" rx="12"/>
+  <circle cx="980" cy="480" r="130" fill="rgba(248,250,252,0.08)"/>
+  <circle cx="860" cy="620" r="160" fill="rgba(248,250,252,0.05)"/>
+</svg>
