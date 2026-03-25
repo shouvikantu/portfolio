@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/emai",
+            "destination": "https://emai-seven.vercel.app/emai"
+        },
+        {
+            "source": "/emai/(.*)",
+            "destination": "https://emai-seven.vercel.app/emai/$1"
+        }
+    ]
+}
