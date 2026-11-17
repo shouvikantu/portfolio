@@ -1,0 +1,29 @@
+[
+  {
+    "id": "upf",
+    "school": "Universitat Pompeu Fabra",
+    "degree": "Erasmus Mundus Joint Master in Artificial Intelligence (EMAI)",
+    "start": "2026-09",
+    "end": "2028-08",
+    "location": "Barcelona, Spain · Rome, Italy",
+    "notes": ["Full Erasmus Mundus scholarship", "Specialization in Intelligent Decision Making", "Mobility at Sapienza University of Rome"]
+  },
+  {
+    "id": "willamette",
+    "school": "Willamette University",
+    "degree": "BS in Computer Science and Data Science",
+    "start": "2022-08",
+    "end": "2026-05",
+    "location": "Salem, Oregon",
+    "notes": ["Summa cum laude, GPA 3.9", "School of Computing and Information Sciences"]
+  },
+  {
+    "id": "birmingham",
+    "school": "University of Birmingham",
+    "degree": "Study abroad, Computer Science",
+    "start": "2025-01",
+    "end": "2025-06",
+    "location": "Birmingham, England",
+    "notes": ["GPA 4.0", "Security and Systems, Natural Language Processing, Intelligent Interactive Systems"]
+  }
+]

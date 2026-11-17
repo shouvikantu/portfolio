@@ -1,0 +1,111 @@
+[
+  {
+    "id": "tide",
+    "org": "TIDE Lab, Universitat Pompeu Fabra",
+    "role": "Research Assistant",
+    "start": "2026-10",
+    "location": "Barcelona, Spain",
+    "kind": "research",
+    "bullets": [
+      "Research conversational AI agents for collaborative learning.",
+      "Build Python research software that turns qualitative coding of educational interaction data into reproducible quantitative pipelines.",
+      "Apply learning analytics and network-based methods to study collaboration in technology-enhanced learning."
+    ]
+  },
+  {
+    "id": "ai4ed",
+    "org": "AI4ED Lab, Willamette University",
+    "role": "Research Assistant",
+    "start": "2025-05",
+    "end": "2026-11",
+    "location": "Salem, Oregon",
+    "kind": "research",
+    "bullets": [
+      "Studied how non-evaluative, voice-first dialogue improves student reasoning and brings confusion to the surface sooner.",
+      "Designed a modular prompt architecture with dynamic personas, feedback modes and system-level behavioral controls.",
+      "Built automated scoring of reasoning quality from voice transcripts: evidence use, trade-off analysis and argument structure."
+    ]
+  },
+  {
+    "id": "vision",
+    "org": "Vision Lab, Willamette University",
+    "role": "CS Research Assistant",
+    "start": "2025-06",
+    "end": "2026-05",
+    "location": "Salem, Oregon",
+    "kind": "research",
+    "bullets": [
+      "Worked with hybrid deep learning and classical computer vision models for image alignment, including homography estimation and optical flow.",
+      "Tested multimodal PyTorch and TensorFlow pipelines that combine RGB and frequency-domain data on digital media.",
+      "Explored image forensics models that localize manipulation from JPEG and DCT artifacts."
+    ]
+  },
+  {
+    "id": "business",
+    "org": "Willamette University Business School",
+    "role": "Research Assistant",
+    "start": "2024-08",
+    "end": "2024-12",
+    "location": "Salem, Oregon",
+    "kind": "research",
+    "bullets": [
+      "Studied stated collaborator preferences in LLMs as a foundation for predicting agentic social decision making.",
+      "Brought behavioral-science methods to LLM testing.",
+      "Wrote scripts to vary model parameters systematically."
+    ]
+  },
+  {
+    "id": "scrp",
+    "org": "SCIS, Willamette University",
+    "role": "SCRP Research Assistant, Generative AI",
+    "start": "2023-05",
+    "end": "2023-08",
+    "location": "Salem, Oregon",
+    "kind": "research",
+    "bullets": [
+      "Co-authored research on an AI-driven teaching tool to reduce instructor burnout and increase student engagement.",
+      "Described the tool's architecture, using LLMs for AI-mediated conversations and automated assessment.",
+      "Helped design adaptive AI agents and a RAG framework for personalized learning paths."
+    ]
+  },
+  {
+    "id": "section-leader",
+    "org": "Willamette University",
+    "role": "Section Leader, CS1",
+    "start": "2025-08",
+    "end": "2026-05",
+    "location": "Salem, Oregon",
+    "kind": "teaching",
+    "bullets": [
+      "Led weekly lab sections for 8–10 introductory computer science students.",
+      "Tutored one-on-one, helped debug code and staffed the student help center.",
+      "Graded projects with detailed feedback, calibrated with faculty in weekly prep meetings."
+    ]
+  },
+  {
+    "id": "colloquium",
+    "org": "SCIS, Willamette University",
+    "role": "Colloquium Associate, Thinking Machines",
+    "start": "2024-08",
+    "end": "2024-12",
+    "location": "Salem, Oregon",
+    "kind": "teaching",
+    "bullets": [
+      "Led discussions and programming exercises on AI and machine learning concepts.",
+      "Held office hours on computational thinking and its social implications.",
+      "Developed course materials and led lab and CHASE sessions with the professor."
+    ]
+  },
+  {
+    "id": "tutor",
+    "org": "Independent",
+    "role": "Private Tutor",
+    "start": "2019-01",
+    "location": "Remote",
+    "kind": "teaching",
+    "bullets": [
+      "Tutor high school and undergraduate students in physics, CS1, CS2, algebra, precalculus, calculus and statistics.",
+      "Use Python examples to make physics and statistics concepts concrete."
+    ]
+  }
+]

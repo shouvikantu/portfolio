@@ -1,0 +1,10 @@
+[
+  { "id": "emjm", "name": "Erasmus Mundus Joint Master Scholarship (EMAI)", "org": "European Commission", "years": "2026–2028" },
+  { "id": "rogers", "name": "Mary Stuart Rogers Academic Scholar", "org": "Willamette University", "years": "2025" },
+  { "id": "merit", "name": "Full Tuition Merit Scholarship", "org": "Willamette University", "years": "2022–2026" },
+  { "id": "fairweather-ds", "name": "Fairweather Scholarship for Data Science", "org": "Willamette University", "years": "2022–2026" },
+  { "id": "fairweather-research", "name": "Fairweather Research Scholarship", "org": "Willamette University", "years": "2022–2026" },
+  { "id": "honor-roll", "name": "Honor Roll", "org": "Willamette University", "years": "2022, 2023, 2024, 2025" },
+  { "id": "yes", "name": "Kennedy-Lugar Youth Exchange and Study (YES) Scholar", "org": "U.S. Department of State", "years": "2021–2022" },
+  { "id": "student-of-year", "name": "Student of the Year", "org": "Bangladesh International School and College, Dhaka", "years": "2019" }
+]

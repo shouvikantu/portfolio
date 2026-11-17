@@ -1,0 +1,7 @@
+[
+  { "id": "sigcse-2027", "title": "Let Them Think Out Loud", "event": "ACM SIGCSE Technical Symposium", "place": "Sacramento, California", "date": "2027-02" },
+  { "id": "ccsc-2025", "title": "Engaging with the Wiphala", "event": "CCSC Rocky Mountain", "place": "Utah Valley University, Utah", "date": "2025-10" },
+  { "id": "ssrd-2024", "title": "AI in Education: Empowering Instructors, Engaging Learners", "event": "Student Scholarship Recognition Day", "place": "Willamette University", "date": "2024-04" },
+  { "id": "techbytes-2023", "title": "Large Language Models in Higher Education: Applications and Uses", "event": "Techbytes, SCIS", "place": "Willamette University", "date": "2023-10" },
+  { "id": "ai4ed-2023", "title": "Using LLMs to Improve Literature Review Efficiency", "event": "AI4ED Workshop", "place": "Tokyo, Japan (virtual)", "date": "2023-09" }
+]
