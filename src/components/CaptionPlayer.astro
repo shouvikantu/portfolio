@@ -1,0 +1,67 @@
+---
+import { tokenize } from '../lib/caption';
+import type { CaptionPart } from '../site';
+
+interface Props { parts: CaptionPart[]; speaker: string; duration?: number; compact?: boolean; seed?: number }
+const { parts, speaker, duration = 14, compact = false, seed = 3 } = Astro.props;
+
+const escape = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const tokens = tokenize(parts);
+let html = '';
+let open: string | undefined;
+for (const t of tokens) {
+  if (t.mark !== open) {
+    if (open) html += '</mark>';
+    if (t.spaceBefore) html += ' ';
+    if (t.mark) html += `<mark class="hl-${t.mark}">`;
+    open = t.mark;
+  } else if (t.spaceBefore) {
+    html += ' ';
+  }
+  html += `<span class="w">${escape(t.text)}</span>`;
+}
+if (open) html += '</mark>';
+
+const clock = (s: number) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(Math.round(s % 60)).padStart(2, '0')}`;
+---
+<div class:list={['player', { compact }]} data-player data-duration={duration} data-seed={seed}>
+  <div class="player-bar">
+    <button type="button" class="player-btn" aria-label="Replay caption">
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor" /></svg>
+    </button>
+    <canvas class="player-wave" aria-hidden="true"></canvas>
+    {!compact && <span class="player-time mono" aria-hidden="true"><span data-elapsed>00:00</span> / {clock(duration)}</span>}
+  </div>
+  <p class="speaker label">{speaker}</p>
+  <p class="caption" set:html={html} />
+</div>
+
+<style>
+  .player { display: grid; gap: 0.25rem; }
+  .player-bar { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.9rem; margin-bottom: 1rem; }
+  .player-btn {
+    width: 2.75rem; height: 2.75rem; border-radius: 50%; border: 0; cursor: pointer;
+    display: grid; place-items: center; padding: 0 0 0 3px;
+    background: var(--accent); color: #fff;
+    transition: transform 0.15s ease;
+  }
+  .player-btn:hover { transform: scale(1.06); }
+  .player-wave { width: 100%; height: 4rem; }
+  .player-time { font-size: 0.75rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .caption { font-size: var(--step-caption); line-height: 1.45; max-width: 40ch; }
+  .caption :global(.w) { transition: color 0.25s ease; }
+  .caption :global(.w.dim) { color: color-mix(in srgb, var(--ink) 35%, var(--bg)); }
+  .caption :global(mark .w.dim) { color: color-mix(in srgb, var(--mark-ink) 45%, transparent); }
+  .compact .player-wave { height: 2.75rem; }
+  .compact .player-btn { width: 2.25rem; height: 2.25rem; }
+  .compact .caption { font-size: var(--step-1); max-width: 52ch; }
+  @media (max-width: 560px) {
+    .player-time { display: none; }
+    .player-bar { grid-template-columns: auto minmax(0, 1fr); }
+  }
+</style>
+
+<script>
+  import { initPlayers } from '../scripts/player';
+  initPlayers();
+</script>

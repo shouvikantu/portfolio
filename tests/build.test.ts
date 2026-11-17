@@ -75,3 +75,26 @@ describe('head and theme', () => {
     expect(attr.slice(0, attr.indexOf('}'))).toMatch(/--mark-ink:/);
   });
 });
+
+describe('player', () => {
+  const doc = distHtml('index.html');
+  const caption = doc.querySelector('.caption');
+
+  it('has the full caption sentence as real text', () => {
+    const text = (caption?.textContent ?? '').replace(/\s+/g, ' ').trim();
+    expect(text).toContain('I build conversational AI that talks with students, in text and in voice, and measure whether it actually improves how they reason. Now an Erasmus Mundus MSc student in AI at Universitat Pompeu Fabra, Barcelona.');
+  });
+
+  it('ships with no dimmed words', () => {
+    expect(doc.querySelectorAll('.dim').length).toBe(0);
+  });
+
+  it('highlights both key phrases', () => {
+    expect(caption?.querySelector('mark.hl-yellow')?.textContent?.replace(/\s+/g, ' ').trim()).toBe('conversational AI that talks with students');
+    expect(caption?.querySelector('mark.hl-green')).not.toBeNull();
+  });
+
+  it('labels the replay button', () => {
+    expect(doc.querySelector('.player button')?.getAttribute('aria-label')).toBe('Replay caption');
+  });
+});
