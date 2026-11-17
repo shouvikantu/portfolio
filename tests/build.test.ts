@@ -145,6 +145,13 @@ describe('homepage', () => {
     }
   });
 
+  it('orders research experience and education by most recent end date', () => {
+    const roles = Array.from(doc.querySelectorAll('#experience .row-meta')).map((el) => el.textContent?.split(' · ')[0]);
+    expect(roles.slice(0, 3)).toEqual(['TIDE Lab, Universitat Pompeu Fabra', 'AI4ED Lab, Willamette University', 'Vision Lab, Willamette University']);
+    const schools = Array.from(doc.querySelectorAll('#education .row-title')).map((el) => el.textContent);
+    expect(schools).toEqual(['Universitat Pompeu Fabra', 'Willamette University', 'University of Birmingham']);
+  });
+
   it('has all sections in order', () => {
     const ids = Array.from(doc.querySelectorAll('main section[id]')).map((s) => s.id);
     expect(ids).toEqual(['research', 'publications', 'continuity', 'experience', 'talks', 'teaching', 'education', 'awards']);
@@ -177,5 +184,28 @@ describe('pages', () => {
 
   it('points robots.txt at the sitemap', () => {
     expect(readDist('robots.txt')).toContain('Sitemap: https://shouvikantu.com/sitemap-index.xml');
+  });
+});
+
+describe('review fixes', () => {
+  it('ships a static waveform and a hidden button until the script runs', () => {
+    const doc = distHtml('index.html');
+    expect(doc.querySelector('.player svg.waveform')).not.toBeNull();
+    expect(doc.querySelector('.player .player-btn')?.hasAttribute('hidden')).toBe(true);
+  });
+
+  it('keeps the 404 page out of search results', () => {
+    const doc = distHtml('404.html');
+    expect(doc.querySelector('meta[name="robots"]')?.getAttribute('content')).toContain('noindex');
+    expect(doc.querySelector('link[rel="canonical"]')).toBeNull();
+  });
+
+  it('defines a dark-mode play-icon color', () => {
+    const css = readFileSync('src/styles/tokens.css', 'utf8');
+    expect(css.slice(0, css.indexOf('@media'))).toMatch(/--btn-ink:/);
+    const media = css.slice(css.indexOf('prefers-color-scheme: dark'));
+    expect(media.slice(0, media.indexOf('}\n}') + 3)).toMatch(/--btn-ink:/);
+    const attr = css.slice(css.indexOf(':root[data-theme="dark"]'));
+    expect(attr.slice(0, attr.indexOf('}'))).toMatch(/--btn-ink:/);
   });
 });

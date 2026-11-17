@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { formatMonth, formatRange, byNewest, isSelf } from '../../src/lib/format';
+import { formatMonth, formatRange, byNewest, byRecent, isSelf } from '../../src/lib/format';
 
 describe('formatMonth', () => {
   it('formats YYYY-MM as short month and year', () => {
@@ -34,5 +34,24 @@ describe('isSelf', () => {
     expect(isSelf('Ahmed Antu, S.')).toBe(true);
     expect(isSelf('Antu, S.')).toBe(true);
     expect(isSelf('Cordova, L.')).toBe(false);
+  });
+});
+
+describe('byRecent', () => {
+  it('puts ongoing entries first, then sorts by end date, then by start date, newest first', () => {
+    const items = [
+      { id: 'vision', start: '2025-06', end: '2026-05' },
+      { id: 'tide', start: '2026-10' },
+      { id: 'ai4ed', start: '2025-05', end: '2026-11' },
+      { id: 'scrp', start: '2023-05', end: '2023-08' },
+    ];
+    expect(byRecent(items).map((x) => x.id)).toEqual(['tide', 'ai4ed', 'vision', 'scrp']);
+  });
+  it('ranks a degree above a semester abroad that started later', () => {
+    const items = [
+      { id: 'birmingham', start: '2025-01', end: '2025-06' },
+      { id: 'willamette', start: '2022-08', end: '2026-05' },
+    ];
+    expect(byRecent(items).map((x) => x.id)).toEqual(['willamette', 'birmingham']);
   });
 });

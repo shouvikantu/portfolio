@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import { byNewest, formatRange } from '../lib/format';
+import { byRecent, formatRange } from '../lib/format';
 
-const schools = byNewest((await getCollection('education')).map((e) => e.data));
+const schools = byRecent((await getCollection('education')).map((e) => e.data));
 ---
 <section id="education" class="section" aria-labelledby="education-h">
   <div class="section-head"><h2 id="education-h">Education</h2></div>

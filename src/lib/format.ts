@@ -37,3 +37,9 @@ const SELF = new Set(['Antu, S. A.', 'Ahmed Antu, S.', 'Antu, S.']);
 export function isSelf(author: string): boolean {
   return SELF.has(author);
 }
+
+/** Ongoing entries first, then by end date, then by start date, newest first. Returns a new array. */
+export function byRecent<T extends { start: string; end?: string }>(items: T[]): T[] {
+  const key = (x: T) => `${x.end ?? '9999-99'}|${x.start}`;
+  return [...items].sort((a, b) => key(b).localeCompare(key(a)));
+}

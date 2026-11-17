@@ -11,10 +11,10 @@ import TalkList from '../components/TalkList.astro';
 import EducationList from '../components/EducationList.astro';
 import AwardList from '../components/AwardList.astro';
 import Footer from '../components/Footer.astro';
-import { byNewest } from '../lib/format';
+import { byRecent } from '../lib/format';
 import { site } from '../site';
 
-const experience = byNewest((await getCollection('experience')).map((e) => e.data));
+const experience = byRecent((await getCollection('experience')).map((e) => e.data));
 const research = experience.filter((e) => e.kind === 'research');
 const teaching = experience.filter((e) => e.kind === 'teaching');
 ---

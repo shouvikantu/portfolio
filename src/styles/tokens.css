@@ -6,6 +6,8 @@
   --rule: #cfd5dd;
   --accent: #e8552f;
   --accent-ink: #c2401c; /* coral dark enough for small text on --bg */
+  --accent-soft: #ff9a76;
+  --btn-ink: #ffffff;
   --mark-ink: #17202c;
   --hl-yellow: #ffe36e;
   --hl-green: #a7e8c0;
@@ -44,6 +46,8 @@
     --rule: #2a3442;
     --accent: #ff7a59;
     --accent-ink: #ff8f72;
+    --accent-soft: #ffb199;
+    --btn-ink: #121823;
     --mark-ink: #121823;
     --hl-yellow: #f5d94e;
     --hl-green: #8fdcae;
@@ -65,6 +69,8 @@
   --rule: #2a3442;
   --accent: #ff7a59;
   --accent-ink: #ff8f72;
+  --accent-soft: #ffb199;
+  --btn-ink: #121823;
   --mark-ink: #121823;
   --hl-yellow: #f5d94e;
   --hl-green: #8fdcae;
