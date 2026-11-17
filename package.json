@@ -12,7 +12,7 @@
     "og": "node scripts/make-og.mjs",
     "test:unit": "vitest run tests/unit",
     "test:build": "vitest run tests/build.test.ts",
-    "test:links": "linkinator dist --recurse --skip \"^https?://(?!localhost)\"",
+    "test:links": "linkinator dist --recurse --skip \"^https://\" --skip \"^mailto:\"",
     "test": "npm run test:unit && npm run build && npm run test:build && npm run test:links"
   },
   "dependencies": {

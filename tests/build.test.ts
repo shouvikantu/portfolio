@@ -150,3 +150,32 @@ describe('homepage', () => {
     expect(ids).toEqual(['research', 'publications', 'continuity', 'experience', 'talks', 'teaching', 'education', 'awards']);
   });
 });
+
+describe('pages', () => {
+  it('has a Continuity page linking to the live site', () => {
+    const doc = distHtml('continuity/index.html');
+    const h1s = doc.querySelectorAll('h1');
+    expect(h1s.length).toBe(1);
+    expect(h1s[0].textContent).toContain('Continuity');
+    expect(doc.querySelector('a[href="https://continuity.ai4edulab.com"]')).not.toBeNull();
+    expect(doc.querySelector('title')?.textContent).toBe('Continuity · Shouvik Ahmed Antu');
+  });
+
+  it('has a 404 page that links home', () => {
+    expect(existsSync('dist/404.html')).toBe(true);
+    expect(distHtml('404.html').querySelector('a[href="/"]')).not.toBeNull();
+  });
+
+  it('ships the OG image', () => {
+    expect(existsSync('dist/og.png')).toBe(true);
+  });
+
+  it('lists the Continuity page in the sitemap', () => {
+    expect(existsSync('dist/sitemap-index.xml')).toBe(true);
+    expect(readDist('sitemap-0.xml')).toContain('https://shouvikantu.com/continuity/');
+  });
+
+  it('points robots.txt at the sitemap', () => {
+    expect(readDist('robots.txt')).toContain('Sitemap: https://shouvikantu.com/sitemap-index.xml');
+  });
+});

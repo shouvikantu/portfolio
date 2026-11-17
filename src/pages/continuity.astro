@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CaptionPlayer from '../components/CaptionPlayer.astro';
+import { site, type CaptionPart } from '../site';
+
+const parts: CaptionPart[] = [
+  { text: 'Continuity lets students ' },
+  { text: 'explain ideas out loud to an AI peer', mark: 'yellow' },
+  { text: ' that asks follow-up questions, so ' },
+  { text: 'instructors can see how they reason', mark: 'green' },
+  { text: '.' },
+];
+
+const sections = [
+  {
+    label: 'What it is',
+    body: [
+      'Continuity is a voice-first learning platform built at the AI4Ed Research Lab at Willamette University. Students hold guided voice conversations about course material with an AI peer that listens, asks follow-up questions and never grades them.',
+      'Professors publish topics and attach reference material that shapes every conversation.',
+    ],
+  },
+  {
+    label: 'Why',
+    body: [
+      'Explaining an idea out loud is one of the best ways to find out whether you understand it. Many students hold back questions in class because they worry about being judged.',
+      'Continuity asks whether non-evaluative, voice-first dialogue helps students reason more carefully and admit confusion sooner.',
+    ],
+  },
+  {
+    label: 'How it works',
+    body: [
+      'A modular prompt architecture gives the AI peer dynamic personas, tailored feedback modes and system-level controls on its behavior.',
+      'Automated scoring rates the quality of reasoning in each voice transcript: how students use evidence, weigh trade-offs and structure an argument.',
+      'Transcripts, surveys and participation data are collected with role-based access, so the platform is ready for research from day one.',
+    ],
+  },
+  {
+    label: 'Where it ran',
+    body: ['Continuity was deployed in a Willamette University computing course and was my capstone project, supervised by Professor Lucas Cordova.'],
+  },
+  {
+    label: 'Results',
+    body: ['The design lessons from that deployment became a paper accepted to the ACM SIGCSE Technical Symposium 2027, to be presented in Sacramento in February 2027.'],
+  },
+];
+---
+<Base
+  title="Continuity · Shouvik Ahmed Antu"
+  description="Continuity is a voice-first AI platform where students explain course concepts out loud to an AI peer. Built by Shouvik Ahmed Antu at the AI4Ed Research Lab."
+  path="/continuity/"
+>
+  <Nav />
+  <main id="main" class="container">
+    <header class="page-head">
+      <p class="label">Featured project · 2023–2026</p>
+      <h1 class="page-title">Continuity</h1>
+      <CaptionPlayer parts={parts} speaker="CONTINUITY" duration={9} seed={11} compact />
+      <a class="visit" href={site.links.continuity} target="_blank" rel="noopener noreferrer">Visit Continuity ↗</a>
+    </header>
+
+    <ol class="rows sections">
+      {sections.map((s) => (
+        <li class="row">
+          <h2 class="row-when section-label">{s.label}</h2>
+          <div class="row-body prose">{s.body.map((p) => <p>{p}</p>)}</div>
+        </li>
+      ))}
+    </ol>
+
+    <section class="cite" aria-labelledby="cite-h">
+      <h2 id="cite-h" class="label">Cite</h2>
+      <p>Antu, S. A., &amp; Cordova, L. (2027). <em>Let Them Think Out Loud: Designing Voice AI for Reasoning and Reflection in Computing Courses.</em> ACM SIGCSE Technical Symposium 2027. Accepted.</p>
+    </section>
+
+    <p class="back"><a href="/">← Back to the homepage</a></p>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .page-head { padding-top: clamp(2.5rem, 7vw, 4.5rem); display: grid; gap: 1rem; max-width: 60rem; }
+  .page-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+  .visit { justify-self: start; margin-top: 0.75rem; font-weight: 700; background: var(--ink); color: var(--bg); text-decoration: none; padding: 0.6rem 1.1rem; border-radius: 999px; }
+  .visit:hover { color: var(--bg); background: var(--accent-ink); }
+  .sections { margin-top: var(--space-section); border-top: 1px solid var(--rule); }
+  .section-label { margin: 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; }
+  .prose { gap: 0.75rem; }
+  .cite { margin-top: 3rem; padding: 1.25rem 1.5rem; border-left: 4px solid var(--accent); background: color-mix(in srgb, var(--ink) 4%, var(--bg)); display: grid; gap: 0.5rem; max-width: var(--measure); }
+  .cite h2 { margin: 0; }
+  .back { margin-top: 3rem; font-family: var(--font-mono); font-size: 0.875rem; }
+</style>
