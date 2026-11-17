@@ -11,14 +11,17 @@ import TalkList from '../components/TalkList.astro';
 import EducationList from '../components/EducationList.astro';
 import AwardList from '../components/AwardList.astro';
 import Footer from '../components/Footer.astro';
-import { byRecent } from '../lib/format';
+import { byNewest, byRecent } from '../lib/format';
+import { scholarlyArticle } from '../lib/structured';
 import { site } from '../site';
 
 const experience = byRecent((await getCollection('experience')).map((e) => e.data));
 const research = experience.filter((e) => e.kind === 'research');
 const teaching = experience.filter((e) => e.kind === 'teaching');
+const personId = new URL('/#person', Astro.site).href;
+const articles = byNewest((await getCollection('publications')).map((p) => p.data)).map((p) => scholarlyArticle(p, personId));
 ---
-<Base title={`${site.name} · Conversational AI for learning`} description={site.description} path="/">
+<Base title={`${site.name} · Conversational AI for learning`} description={site.description} path="/" ld={articles}>
   <Nav />
   <main id="main" class="container">
     <section id="research" class="hero" aria-labelledby="name">

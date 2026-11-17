@@ -5,7 +5,7 @@ export const site = {
   name: 'Shouvik Ahmed Antu',
   shortName: 'S. A. Antu',
   description:
-    'Shouvik Ahmed Antu builds conversational AI that talks with students, in text and voice, and studies whether it improves how they reason. Erasmus Mundus MSc in AI at Universitat Pompeu Fabra, Barcelona.',
+    'Shouvik Ahmed Antu builds conversational AI for education, in text and voice, and studies whether it improves how students reason. MSc AI, UPF Barcelona.',
   email: 'shouvikwu26@gmail.com',
   links: {
     github: 'https://github.com/shouvikantu',

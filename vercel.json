@@ -8,5 +8,16 @@
             "source": "/emai/(.*)",
             "destination": "https://emai-seven.vercel.app/emai/$1"
         }
+    ],
+    "headers": [
+        {
+            "source": "/slides/(.*)",
+            "headers": [
+                {
+                    "key": "X-Robots-Tag",
+                    "value": "noindex"
+                }
+            ]
+        }
     ]
 }

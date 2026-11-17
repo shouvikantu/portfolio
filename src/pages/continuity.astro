@@ -13,6 +13,17 @@ const parts: CaptionPart[] = [
   { text: '.' },
 ];
 
+const app = {
+  '@type': 'WebApplication',
+  name: 'Continuity',
+  url: site.links.continuity,
+  description: 'Voice-first learning platform where students explain course concepts out loud to an AI peer that asks follow-up questions.',
+  applicationCategory: 'EducationalApplication',
+  operatingSystem: 'Web',
+  creator: { '@id': new URL('/#person', Astro.site).href },
+  sourceOrganization: { '@type': 'Organization', name: 'AI4Ed Research Lab, Willamette University' },
+};
+
 const sections = [
   {
     label: 'What it is',
@@ -50,6 +61,7 @@ const sections = [
   title="Continuity · Shouvik Ahmed Antu"
   description="Continuity is a voice-first AI platform where students explain course concepts out loud to an AI peer. Built by Shouvik Ahmed Antu at the AI4Ed Research Lab."
   path="/continuity/"
+  ld={[app]}
 >
   <Nav />
   <main id="main" class="container">

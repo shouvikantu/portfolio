@@ -8,8 +8,9 @@ import '@fontsource/jetbrains-mono/600.css';
 import '../styles/tokens.css';
 import '../styles/global.css';
 import Seo from '../components/Seo.astro';
+import displayFont from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
 
-interface Props { title: string; description: string; path: string; ogImage?: string; noindex?: boolean }
+interface Props { title: string; description: string; path: string; ogImage?: string; noindex?: boolean; ld?: Record<string, unknown>[] }
 const props = Astro.props;
 ---
 <!doctype html>
@@ -19,6 +20,7 @@ const props = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#eef0f4" />
+    <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <Seo {...props} />

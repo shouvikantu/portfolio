@@ -1,16 +1,17 @@
 ---
 import { site } from '../site';
 
-interface Props { title: string; description: string; path: string; ogImage?: string; noindex?: boolean }
-const { title, description, path, ogImage = '/og.png', noindex = false } = Astro.props;
+interface Props { title: string; description: string; path: string; ogImage?: string; noindex?: boolean; ld?: Record<string, unknown>[] }
+const { title, description, path, ogImage = '/og.png', noindex = false, ld = [] } = Astro.props;
 const base = Astro.site ?? new URL('https://www.shouvikantu.com');
 const canonical = new URL(path, base).href;
 const image = new URL(ogImage, base).href;
 
 const person = {
-  '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': new URL('/#person', base).href,
   name: site.name,
+  description: 'AI researcher building conversational AI for education, in text and voice, and studying whether it improves how students reason. Erasmus Mundus MSc student in Artificial Intelligence at Universitat Pompeu Fabra.',
   url: base.href,
   email: `mailto:${site.email}`,
   jobTitle: 'AI researcher',
@@ -22,6 +23,7 @@ const person = {
   knowsAbout: ['Conversational AI', 'AI in education', 'Large language models', 'Learning analytics', 'Voice interfaces'],
   sameAs: [site.links.github, site.links.linkedin],
 };
+const graph = { '@context': 'https://schema.org', '@graph': [person, ...ld] };
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
@@ -37,4 +39,4 @@ const person = {
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />
-<script type="application/ld+json" set:html={JSON.stringify(person)} />
+<script type="application/ld+json" set:html={JSON.stringify(graph)} />

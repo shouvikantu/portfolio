@@ -28,6 +28,12 @@ describe('preserved routes', () => {
   });
 });
 
+type LdNode = Record<string, any>;
+function ldGraph(d: Document): LdNode[] {
+  const ld = JSON.parse(d.querySelector('script[type="application/ld+json"]')?.textContent ?? '{}');
+  return ld['@graph'] ?? [ld];
+}
+
 const PHONE = [/711539675/, /\+34/, /503-376/, /\(503\)/, /telephone/i];
 
 function builtHtmlFiles(dir = 'dist'): string[] {
@@ -52,10 +58,11 @@ describe('head and theme', () => {
     expect(doc.querySelector('meta[property="og:image"]')?.getAttribute('content')).toMatch(/^https:\/\/www\.shouvikantu\.com\//);
   });
 
-  it('has Person JSON-LD without a telephone', () => {
-    const ld = JSON.parse(doc.querySelector('script[type="application/ld+json"]')?.textContent ?? '{}');
-    expect(ld['@type']).toBe('Person');
-    expect(ld).not.toHaveProperty('telephone');
+  it('has Person JSON-LD with a description and no telephone', () => {
+    const person = ldGraph(doc).find((n) => n['@type'] === 'Person');
+    expect(person?.name).toBe('Shouvik Ahmed Antu');
+    expect(person?.description).toBeTruthy();
+    expect(person).not.toHaveProperty('telephone');
   });
 
   it('shows no phone number in any built page', () => {
@@ -202,5 +209,58 @@ describe('review fixes', () => {
 
   it('defines the play-icon color token', () => {
     expect(readFileSync('src/styles/tokens.css', 'utf8')).toMatch(/--btn-ink:/);
+  });
+});
+
+describe('seo fixes', () => {
+  const home = distHtml('index.html');
+
+  it('keeps the homepage description within 160 characters', () => {
+    const d = home.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
+    expect(d.length).toBeGreaterThan(70);
+    expect(d.length).toBeLessThanOrEqual(160);
+  });
+
+  it('links to the Continuity page only by its canonical URL', () => {
+    for (const page of ['index.html', 'continuity/index.html', '404.html']) {
+      for (const a of Array.from(distHtml(page).querySelectorAll('a[href^="/continuity"]'))) {
+        expect(a.getAttribute('href'), page).toBe('/continuity/');
+      }
+    }
+  });
+
+  it('tells search engines not to index the slide fragments', () => {
+    const headers = JSON.parse(readFileSync('vercel.json', 'utf8')).headers ?? [];
+    const rule = headers.find((h: { source: string }) => h.source === '/slides/(.*)');
+    expect(rule?.headers).toContainEqual({ key: 'X-Robots-Tag', value: 'noindex' });
+  });
+
+  it('gives the CCSC deck a description, canonical and preview tags, and lists it in the sitemap', () => {
+    const ccsc = distHtml('ccsc.html');
+    expect((ccsc.querySelector('meta[name="description"]')?.getAttribute('content') ?? '').length).toBeGreaterThan(70);
+    expect(ccsc.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://www.shouvikantu.com/ccsc.html');
+    expect(ccsc.querySelector('meta[property="og:image"]')?.getAttribute('content')).toBe('https://www.shouvikantu.com/og.png');
+    expect(readDist('sitemap-0.xml')).toContain('https://www.shouvikantu.com/ccsc.html');
+  });
+
+  it('marks up all four publications as scholarly articles by Shouvik', () => {
+    const articles = ldGraph(home).filter((n) => n['@type'] === 'ScholarlyArticle');
+    expect(articles.map((a) => a.name)).toContain('Engaging with the Wiphala: A Code-Generation Hardened CS1 Final');
+    expect(articles.length).toBe(4);
+    for (const a of articles) expect(a.author).toContainEqual({ '@id': 'https://www.shouvikantu.com/#person' });
+  });
+
+  it('marks up Continuity as a web application', () => {
+    const app = ldGraph(distHtml('continuity/index.html')).find((n) => n['@type'] === 'WebApplication');
+    expect(app?.name).toBe('Continuity');
+    expect(app?.url).toBe('https://continuity.ai4edulab.com');
+  });
+
+  it('preloads the display font', () => {
+    const link = home.querySelector('link[rel="preload"][as="font"]');
+    const href = link?.getAttribute('href') ?? '';
+    expect(href).toMatch(/bricolage-grotesque-latin-wght-normal.*\.woff2$/);
+    expect(link?.hasAttribute('crossorigin')).toBe(true);
+    expect(existsSync(`dist${href}`)).toBe(true);
   });
 });
