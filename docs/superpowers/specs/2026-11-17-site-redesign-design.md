@@ -135,5 +135,5 @@ Astro content collections under `src/content/`, each validated with a Zod schema
 1. Publish the November 2026 CV PDF as is, phone number included. The site's own pages still show no phone.
 2. The CCSC Wiphala talk was **Oct 2025** (the CV's "Oct 2024" is a typo).
 3. AI4ED Lab dates are **May 2025 – Nov 2026** (LinkedIn is correct).
-4. Production domain: **https://shouvikantu.com**.
+4. Production domain: **https://www.shouvikantu.com** (Vercel redirects the bare domain to www).
 5. Continuity's live site is **https://continuity.ai4edulab.com**; link it from the card and the project page.

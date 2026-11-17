@@ -48,8 +48,8 @@ describe('head and theme', () => {
   });
 
   it('points canonical and og:image at the production domain', () => {
-    expect(doc.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://shouvikantu.com/');
-    expect(doc.querySelector('meta[property="og:image"]')?.getAttribute('content')).toMatch(/^https:\/\/shouvikantu\.com\//);
+    expect(doc.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://www.shouvikantu.com/');
+    expect(doc.querySelector('meta[property="og:image"]')?.getAttribute('content')).toMatch(/^https:\/\/www\.shouvikantu\.com\//);
   });
 
   it('has Person JSON-LD without a telephone', () => {
@@ -179,11 +179,11 @@ describe('pages', () => {
 
   it('lists the Continuity page in the sitemap', () => {
     expect(existsSync('dist/sitemap-index.xml')).toBe(true);
-    expect(readDist('sitemap-0.xml')).toContain('https://shouvikantu.com/continuity/');
+    expect(readDist('sitemap-0.xml')).toContain('https://www.shouvikantu.com/continuity/');
   });
 
   it('points robots.txt at the sitemap', () => {
-    expect(readDist('robots.txt')).toContain('Sitemap: https://shouvikantu.com/sitemap-index.xml');
+    expect(readDist('robots.txt')).toContain('Sitemap: https://www.shouvikantu.com/sitemap-index.xml');
   });
 });
 

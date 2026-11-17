@@ -3,7 +3,7 @@ import { site } from '../site';
 
 interface Props { title: string; description: string; path: string; ogImage?: string; noindex?: boolean }
 const { title, description, path, ogImage = '/og.png', noindex = false } = Astro.props;
-const base = Astro.site ?? new URL('https://shouvikantu.com');
+const base = Astro.site ?? new URL('https://www.shouvikantu.com');
 const canonical = new URL(path, base).href;
 const image = new URL(ogImage, base).href;
 

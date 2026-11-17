@@ -12,7 +12,7 @@
 
 ## Global Constraints
 
-- Production site URL: `https://shouvikantu.com` (set once as `site` in `astro.config.mjs`).
+- Production site URL: `https://www.shouvikantu.com` (set once as `site` in `astro.config.mjs`).
 - No phone number in any page or metadata. Tests reject `711539675`, `+34`, `503-376`, `(503)` and `telephone` in built HTML.
 - `vercel.json` `rewrites` stay exactly: `/emai` → `https://emai-seven.vercel.app/emai`, `/emai/(.*)` → `https://emai-seven.vercel.app/emai/$1`.
 - `/ccsc.html`, `/slides/01-title.html` … `/slides/15-closing.html` and `/images/whiphala.jpg` are served at the same paths. Only one change is allowed in `ccsc.html`: pin `reveal.js@5` to `reveal.js@5.2.1`.
