@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { existsSync, readFileSync, statSync } from 'node:fs';
-import { readDist } from './helpers';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { distHtml, readDist } from './helpers';
 
 const SLIDES = ['01-title', '02-qa', '03-motivation', '04-course-context', '05-design-principles', '06-wiphala', '07-milestones', '08-strings-files', '09-interactive-graphics', '10-reading-python', '11-defining-classes', '12-fundamental-python', '13-results', '14-implications', '15-closing'];
 
@@ -25,5 +25,53 @@ describe('preserved routes', () => {
       { source: '/emai', destination: 'https://emai-seven.vercel.app/emai' },
       { source: '/emai/(.*)', destination: 'https://emai-seven.vercel.app/emai/$1' },
     ]);
+  });
+});
+
+const PHONE = [/711539675/, /\+34/, /503-376/, /\(503\)/, /telephone/i];
+
+function builtHtmlFiles(dir = 'dist'): string[] {
+  const out: string[] = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const p = `${dir}/${entry.name}`;
+    if (entry.isDirectory()) { if (entry.name !== 'slides') out.push(...builtHtmlFiles(p)); }
+    else if (entry.name.endsWith('.html') && p !== 'dist/ccsc.html') out.push(p);
+  }
+  return out;
+}
+
+describe('head and theme', () => {
+  const doc = distHtml('index.html');
+
+  it('has exactly one h1', () => {
+    expect(doc.querySelectorAll('h1').length).toBe(1);
+  });
+
+  it('points canonical and og:image at the production domain', () => {
+    expect(doc.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://shouvikantu.com/');
+    expect(doc.querySelector('meta[property="og:image"]')?.getAttribute('content')).toMatch(/^https:\/\/shouvikantu\.com\//);
+  });
+
+  it('has Person JSON-LD without a telephone', () => {
+    const ld = JSON.parse(doc.querySelector('script[type="application/ld+json"]')?.textContent ?? '{}');
+    expect(ld['@type']).toBe('Person');
+    expect(ld).not.toHaveProperty('telephone');
+  });
+
+  it('shows no phone number in any built page', () => {
+    const files = builtHtmlFiles();
+    expect(files.length).toBeGreaterThan(0);
+    for (const f of files) {
+      const html = readFileSync(f, 'utf8');
+      for (const re of PHONE) expect(html, `${f} matches ${re}`).not.toMatch(re);
+    }
+  });
+
+  it('defines --mark-ink for both dark-theme selectors', () => {
+    const css = readFileSync('src/styles/tokens.css', 'utf8');
+    const media = css.slice(css.indexOf('prefers-color-scheme: dark'));
+    expect(media.slice(0, media.indexOf('}\n}') + 3)).toMatch(/--mark-ink:/);
+    const attr = css.slice(css.indexOf(':root[data-theme="dark"]'));
+    expect(attr.slice(0, attr.indexOf('}'))).toMatch(/--mark-ink:/);
   });
 });

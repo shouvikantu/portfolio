@@ -1,0 +1,79 @@
+/* Live Caption: cool paper, ink, one coral accent, qualitative-coding highlighters. */
+:root {
+  --bg: #eef0f4;
+  --ink: #17202c;
+  --muted: #5b6875;
+  --rule: #cfd5dd;
+  --accent: #e8552f;
+  --accent-ink: #c2401c; /* coral dark enough for small text on --bg */
+  --mark-ink: #17202c;
+  --hl-yellow: #ffe36e;
+  --hl-green: #a7e8c0;
+  --hl-pink: #ffbfd0;
+  --hl-blue: #bcd7ff;
+  --card-bg: #17202c;
+  --card-ink: #eef0f4;
+  --card-muted: #b9c2cd;
+  --card-accent: #ffb3a2;
+  --wave-rest: #17202c;
+
+  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Atkinson Hyperlegible', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --step--1: 0.8125rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5rem;
+  --step-caption: clamp(1.25rem, 2.3vw, 1.7rem);
+  --step-display: clamp(2.75rem, 7.6vw, 6rem);
+
+  --measure: 65ch;
+  --page: 1120px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --space-section: clamp(3.5rem, 8vw, 6rem);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121823;
+    --ink: #e6eaf0;
+    --muted: #9aa6b4;
+    --rule: #2a3442;
+    --accent: #ff7a59;
+    --accent-ink: #ff8f72;
+    --mark-ink: #121823;
+    --hl-yellow: #f5d94e;
+    --hl-green: #8fdcae;
+    --hl-pink: #f7a8bd;
+    --hl-blue: #a9c8f5;
+    --card-bg: #1d2634;
+    --card-ink: #e6eaf0;
+    --card-muted: #a9b4c1;
+    --card-accent: #ffb3a2;
+    --wave-rest: #e6eaf0;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #121823;
+  --ink: #e6eaf0;
+  --muted: #9aa6b4;
+  --rule: #2a3442;
+  --accent: #ff7a59;
+  --accent-ink: #ff8f72;
+  --mark-ink: #121823;
+  --hl-yellow: #f5d94e;
+  --hl-green: #8fdcae;
+  --hl-pink: #f7a8bd;
+  --hl-blue: #a9c8f5;
+  --card-bg: #1d2634;
+  --card-ink: #e6eaf0;
+  --card-muted: #a9b4c1;
+  --card-accent: #ffb3a2;
+  --wave-rest: #e6eaf0;
+  color-scheme: dark;
+}

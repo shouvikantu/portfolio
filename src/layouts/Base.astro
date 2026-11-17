@@ -1,0 +1,31 @@
+---
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource/atkinson-hyperlegible/400.css';
+import '@fontsource/atkinson-hyperlegible/400-italic.css';
+import '@fontsource/atkinson-hyperlegible/700.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/600.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+
+interface Props { title: string; description: string; path: string; ogImage?: string }
+const props = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#eef0f4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121823" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <Seo {...props} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>
