@@ -1,0 +1,39 @@
+---
+import Waveform from './Waveform.astro';
+import { site } from '../site';
+---
+<section id="continuity" class="section" aria-labelledby="continuity-h">
+  <div class="section-head"><h2 id="continuity-h">Featured project</h2></div>
+  <article class="card">
+    <div class="card-text">
+      <p class="label card-kicker">Voice AI · AI4Ed Research Lab</p>
+      <h3 class="card-title">Continuity</h3>
+      <p>Students explain course concepts out loud to an AI peer that asks follow-up questions. Professors publish the topics and reference material, and every conversation becomes research data on how students reason.</p>
+      <p class="card-note">Design lessons from deploying it in a Willamette computing course were accepted to SIGCSE TS 2027.</p>
+      <div class="card-links">
+        <a href="/continuity">Read about the project</a>
+        <a href={site.links.continuity} target="_blank" rel="noopener noreferrer">Visit the live site ↗</a>
+      </div>
+    </div>
+    <Waveform count={56} seed={11} played={0.55} height={80} class="card-wave" />
+  </article>
+</section>
+
+<style>
+  .card {
+    margin-top: 1.25rem;
+    background: var(--card-bg); color: var(--card-ink);
+    border-radius: 16px; padding: clamp(1.25rem, 3vw, 2rem);
+    display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 2rem; align-items: center;
+    --wave-on: var(--card-accent); --wave-off: var(--card-ink);
+  }
+  .card-text { display: grid; gap: 0.75rem; min-width: 0; }
+  .card-kicker { color: var(--card-accent); }
+  .card-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: -0.02em; }
+  .card p { color: var(--card-ink); max-width: 52ch; }
+  .card-note { color: var(--card-muted) !important; font-size: 0.9375rem; }
+  .card-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 0.25rem; font-weight: 700; }
+  .card-links a { color: var(--card-ink); text-decoration-color: var(--card-accent); }
+  .card-links a:hover { color: var(--card-accent); }
+  @media (max-width: 720px) { .card { grid-template-columns: minmax(0, 1fr); } }
+</style>

@@ -1,0 +1,18 @@
+---
+import { site } from '../site';
+---
+<dl class="now">
+  {site.now.map((n) => (
+    <div class="now-item">
+      <dt class="label">{n.label}</dt>
+      <dd>{n.text}</dd>
+    </div>
+  ))}
+</dl>
+
+<style>
+  .now { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 1.5rem; margin: 2.5rem 0 0; }
+  .now-item { border-left: 3px solid var(--accent); padding-left: 0.85rem; display: grid; gap: 0.15rem; min-width: 0; }
+  .now dd { margin: 0; font-size: 0.9375rem; }
+  @media (max-width: 720px) { .now { grid-template-columns: minmax(0, 1fr); } }
+</style>

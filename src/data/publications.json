@@ -2,7 +2,10 @@
   {
     "id": "think-out-loud",
     "title": "Let Them Think Out Loud: Designing Voice AI for Reasoning and Reflection in Computing Courses",
-    "authors": ["Antu, S. A.", "Cordova, L."],
+    "authors": [
+      "Antu, S. A.",
+      "Cordova, L."
+    ],
     "year": 2027,
     "venue": "ACM SIGCSE Technical Symposium 2027",
     "venueShort": "SIGCSE TS",
@@ -12,7 +15,10 @@
   {
     "id": "wiphala",
     "title": "Engaging with the Wiphala: A Code-Generation Hardened CS1 Final",
-    "authors": ["Deutschbein, C.", "Ahmed Antu, S."],
+    "authors": [
+      "Deutschbein, C.",
+      "Ahmed Antu, S."
+    ],
     "year": 2025,
     "venue": "Journal of Computing Sciences in Colleges",
     "venueShort": "JCSC",
@@ -23,8 +29,13 @@
   {
     "id": "llm-lit-review",
     "title": "Using LLM (Large Language Model) to Improve Efficiency in Literature Review for Undergraduate Research",
-    "authors": ["Antu, S.", "Chen, H.", "Richards, C."],
+    "authors": [
+      "Antu, S.",
+      "Chen, H.",
+      "Richards, C."
+    ],
     "year": 2023,
+    "date": "2023-09",
     "venue": "AI4ED Workshop, CEUR-WS Vol. 3487",
     "venueShort": "CEUR-WS",
     "status": "published",
@@ -34,8 +45,13 @@
   {
     "id": "collatz",
     "title": "An Exploration Into the Collatz Conjecture with Changed Parameters",
-    "authors": ["Antu, S. A.", "Shrimali, R.", "Jones, M."],
+    "authors": [
+      "Antu, S. A.",
+      "Shrimali, R.",
+      "Jones, M."
+    ],
     "year": 2023,
+    "date": "2023-05",
     "venue": "arXiv:2305.01017",
     "venueShort": "arXiv",
     "status": "preprint",

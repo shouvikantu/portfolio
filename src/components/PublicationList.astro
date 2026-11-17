@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import { byNewest, isSelf } from '../lib/format';
+
+const pubs = byNewest((await getCollection('publications')).map((p) => p.data));
+const statusLabel: Record<string, string | undefined> = { accepted: 'Accepted', submitted: 'Submitted', preprint: 'Preprint' };
+---
+<section id="publications" class="section" aria-labelledby="publications-h">
+  <div class="section-head"><h2 id="publications-h">Publications</h2></div>
+  <ol class="rows">
+    {pubs.map((p) => (
+      <li class="row">
+        <span class="row-when pub-year">{p.year}</span>
+        <div class="row-body">
+          {p.url
+            ? <a class="row-title pub-title" href={p.url} target="_blank" rel="noopener noreferrer">{p.title}</a>
+            : <span class="row-title pub-title">{p.title}</span>}
+          <span class="row-meta">
+            {p.authors.map((a, i) => <>{i > 0 && ', '}{isSelf(a) ? <strong class="self">{a}</strong> : a}</>)}
+            <span aria-hidden="true"> · </span><em>{p.venue}</em>
+            {statusLabel[p.status] && <> <span class="status">({statusLabel[p.status]})</span></>}
+          </span>
+        </div>
+        <span class={`tag hl-${p.tag}`}>{p.venueShort}</span>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .pub-title { text-decoration: none; }
+  a.pub-title:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+  .self { color: var(--ink); font-weight: 700; }
+  .status { color: var(--accent-ink); font-weight: 700; }
+</style>

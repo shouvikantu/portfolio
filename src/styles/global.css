@@ -63,3 +63,31 @@ mark { color: var(--mark-ink); padding: 0 0.15em; border-radius: 2px; -webkit-bo
 .section-head h2 { font-family: var(--font-display); font-weight: 700; font-size: var(--step-2); letter-spacing: -0.01em; }
 
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Transcript rows: a mono "timestamp" column, then the entry. Used by every list section. */
+.rows { list-style: none; }
+.row {
+  display: grid;
+  grid-template-columns: 10rem minmax(0, 1fr) auto;
+  gap: 0.25rem 1.5rem;
+  padding-block: 1.1rem;
+  border-top: 1px dashed var(--rule);
+}
+.rows > .row:first-child { border-top: 0; }
+.row-when { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); padding-top: 0.2rem; font-variant-numeric: tabular-nums; }
+.row-body { min-width: 0; display: grid; gap: 0.3rem; max-width: var(--measure); }
+.row-title { font-weight: 700; }
+.row-meta { color: var(--muted); font-size: 0.9375rem; }
+.row-bullets { list-style: none; display: grid; gap: 0.3rem; margin-top: 0.3rem; font-size: 0.9375rem; }
+.row-bullets li { position: relative; padding-left: 1rem; }
+.row-bullets li::before { content: ''; position: absolute; left: 0; top: 0.7em; width: 0.4rem; height: 1px; background: var(--muted); }
+.tag {
+  justify-self: start; align-self: start;
+  font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.04em;
+  padding: 0.15rem 0.5rem; border-radius: 3px; color: var(--mark-ink); white-space: nowrap;
+}
+.tag-plain { background: transparent; color: var(--muted); border: 1px solid var(--rule); }
+@media (max-width: 720px) {
+  .row { grid-template-columns: minmax(0, 1fr); }
+  .row .tag { grid-row: 2; }
+}

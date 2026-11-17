@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import { byNewest, formatMonth } from '../lib/format';
+
+const talks = byNewest((await getCollection('talks')).map((t) => t.data));
+const now = new Date().toISOString().slice(0, 7);
+---
+<section id="talks" class="section" aria-labelledby="talks-h">
+  <div class="section-head"><h2 id="talks-h">Talks</h2></div>
+  <ol class="rows">
+    {talks.map((t) => (
+      <li class="row">
+        <span class="row-when">{formatMonth(t.date)}</span>
+        <div class="row-body">
+          <span class="row-title">{t.title}</span>
+          <span class="row-meta">{t.event} · {t.place}</span>
+        </div>
+        {t.date > now && <span class="tag hl-yellow">Upcoming</span>}
+      </li>
+    ))}
+  </ol>
+</section>

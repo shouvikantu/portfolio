@@ -1,0 +1,27 @@
+---
+import { site } from '../site';
+const links = [
+  { href: '/#research', label: 'research' },
+  { href: '/#publications', label: 'publications' },
+  { href: '/#continuity', label: 'continuity' },
+  { href: '/#teaching', label: 'teaching' },
+  { href: site.links.cv, label: 'cv.pdf' },
+];
+---
+<header class="container nav-wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="nav-home" href="/">{site.shortName}</a>
+    <ul>
+      {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .nav-wrap { padding-block: calc(1.25rem + env(safe-area-inset-top, 0px)) 0; }
+  .nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem 1.5rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--rule); font-family: var(--font-mono); font-size: 0.8125rem; }
+  .nav a { text-decoration: none; color: var(--muted); }
+  .nav a:hover { color: var(--accent-ink); }
+  .nav .nav-home { color: var(--ink); font-weight: 600; }
+  .nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+</style>

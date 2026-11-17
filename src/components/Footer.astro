@@ -1,0 +1,28 @@
+---
+import { site } from '../site';
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-lead">
+      <p class="label">Get in touch</p>
+      <a class="footer-email" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+    <ul class="footer-links">
+      <li><a href={site.links.github}>GitHub</a></li>
+      <li><a href={site.links.linkedin}>LinkedIn</a></li>
+      <li><a href={site.links.cv}>CV (PDF)</a></li>
+    </ul>
+    <p class="footer-small">{site.outside} © {year} {site.name}.</p>
+  </div>
+</footer>
+
+<style>
+  .footer { margin-top: var(--space-section); border-top: 1px solid var(--rule); padding-block: 2.5rem calc(2.5rem + env(safe-area-inset-bottom, 0px)); }
+  .footer-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.5rem 2rem; align-items: end; }
+  .footer-lead { display: grid; gap: 0.35rem; min-width: 0; }
+  .footer-email { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.35rem, 3.2vw, 2rem); letter-spacing: -0.01em; overflow-wrap: anywhere; }
+  .footer-links { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-family: var(--font-mono); font-size: 0.875rem; }
+  .footer-small { grid-column: 1 / -1; color: var(--muted); font-size: 0.875rem; }
+  @media (max-width: 720px) { .footer-inner { grid-template-columns: minmax(0, 1fr); } }
+</style>

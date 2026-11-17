@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import { byNewest, formatRange } from '../lib/format';
+
+const schools = byNewest((await getCollection('education')).map((e) => e.data));
+---
+<section id="education" class="section" aria-labelledby="education-h">
+  <div class="section-head"><h2 id="education-h">Education</h2></div>
+  <ol class="rows">
+    {schools.map((s) => (
+      <li class="row">
+        <span class="row-when">{formatRange(s.start, s.end)}</span>
+        <div class="row-body">
+          <span class="row-title">{s.school}</span>
+          <span>{s.degree}</span>
+          <span class="row-meta">{s.location} · {s.notes.join(' · ')}</span>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

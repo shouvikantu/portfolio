@@ -11,6 +11,7 @@ const publications = defineCollection({
     title: z.string(),
     authors: z.array(z.string()).min(1),
     year: z.number().int(),
+    date: ym.optional(),
     venue: z.string(),
     venueShort: z.string(),
     status: z.enum(['published', 'accepted', 'submitted', 'preprint']),

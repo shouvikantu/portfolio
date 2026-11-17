@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+
+const awards = (await getCollection('awards')).map((a) => a.data);
+---
+<section id="awards" class="section" aria-labelledby="awards-h">
+  <div class="section-head"><h2 id="awards-h">Awards and honors</h2></div>
+  <ul class="rows">
+    {awards.map((a) => (
+      <li class="row">
+        <span class="row-when">{a.years}</span>
+        <div class="row-body">
+          <span class="row-title">{a.name}</span>
+          <span class="row-meta">{a.org}</span>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>

@@ -1,11 +1,46 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
 import CaptionPlayer from '../components/CaptionPlayer.astro';
+import NowStrip from '../components/NowStrip.astro';
+import PublicationList from '../components/PublicationList.astro';
+import ContinuityCard from '../components/ContinuityCard.astro';
+import Timeline from '../components/Timeline.astro';
+import TalkList from '../components/TalkList.astro';
+import EducationList from '../components/EducationList.astro';
+import AwardList from '../components/AwardList.astro';
+import Footer from '../components/Footer.astro';
+import { byNewest } from '../lib/format';
 import { site } from '../site';
+
+const experience = byNewest((await getCollection('experience')).map((e) => e.data));
+const research = experience.filter((e) => e.kind === 'research');
+const teaching = experience.filter((e) => e.kind === 'teaching');
 ---
 <Base title={`${site.name} · Conversational AI for learning`} description={site.description} path="/">
+  <Nav />
   <main id="main" class="container">
-    <h1>{site.name}</h1>
-    <CaptionPlayer parts={site.caption.parts} speaker={site.caption.speaker} />
+    <section id="research" class="hero" aria-labelledby="name">
+      <h1 id="name" class="hero-name">Shouvik<br />Ahmed Antu</h1>
+      <CaptionPlayer parts={site.caption.parts} speaker={site.caption.speaker} />
+      <NowStrip />
+    </section>
+    <PublicationList />
+    <ContinuityCard />
+    <Timeline id="experience" heading="Research experience" items={research} />
+    <TalkList />
+    <Timeline id="teaching" heading="Teaching" items={teaching} />
+    <EducationList />
+    <AwardList />
   </main>
+  <Footer />
 </Base>
+
+<style>
+  .hero { padding-top: clamp(2.5rem, 7vw, 5rem); scroll-margin-top: 1rem; }
+  .hero-name {
+    font-family: var(--font-display); font-weight: 800; font-size: var(--step-display);
+    line-height: 0.92; letter-spacing: -0.035em; margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+</style>

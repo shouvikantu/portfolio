@@ -98,3 +98,55 @@ describe('player', () => {
     expect(doc.querySelector('.player button')?.getAttribute('aria-label')).toBe('Replay caption');
   });
 });
+
+describe('homepage', () => {
+  const doc = distHtml('index.html');
+  const text = (sel: string) => (doc.querySelector(sel)?.textContent ?? '').replace(/\s+/g, ' ');
+
+  it('lists all four publications newest first', () => {
+    const titles = Array.from(doc.querySelectorAll('#publications .pub-title')).map((el) => el.textContent?.trim());
+    expect(titles).toEqual([
+      'Let Them Think Out Loud: Designing Voice AI for Reasoning and Reflection in Computing Courses',
+      'Engaging with the Wiphala: A Code-Generation Hardened CS1 Final',
+      'Using LLM (Large Language Model) to Improve Efficiency in Literature Review for Undergraduate Research',
+      'An Exploration Into the Collatz Conjecture with Changed Parameters',
+    ]);
+    const years = Array.from(doc.querySelectorAll('#publications .pub-year')).map((el) => el.textContent?.trim());
+    expect(years).toEqual(['2027', '2025', '2023', '2023']);
+  });
+
+  it('links Continuity to its page and its live site', () => {
+    expect(doc.querySelector('#continuity a[href^="/continuity"]')).not.toBeNull();
+    expect(doc.querySelector('#continuity a[href="https://continuity.ai4edulab.com"]')).not.toBeNull();
+  });
+
+  it('dates the Wiphala talk Oct 2025', () => {
+    expect(text('#talks')).toContain('Oct 2025');
+    expect(text('#talks')).not.toContain('Oct 2024');
+  });
+
+  it('dates AI4ED Lab May 2025 – Nov 2026', () => {
+    expect(text('#experience')).toContain('May 2025 – Nov 2026');
+  });
+
+  it('has the contact links in the footer', () => {
+    for (const href of ['https://github.com/shouvikantu', 'https://www.linkedin.com/in/shouvikantu/', 'mailto:shouvikwu26@gmail.com', '/cv.pdf']) {
+      expect(doc.querySelector(`footer a[href="${href}"]`), href).not.toBeNull();
+    }
+  });
+
+  it('marks every new-tab link noopener', () => {
+    for (const a of Array.from(doc.querySelectorAll('a[target="_blank"]'))) expect(a.getAttribute('rel') ?? '').toContain('noopener');
+  });
+
+  it('labels every link that has no text', () => {
+    for (const a of Array.from(doc.querySelectorAll('a'))) {
+      if (!(a.textContent ?? '').trim()) expect(a.getAttribute('aria-label'), a.outerHTML).toBeTruthy();
+    }
+  });
+
+  it('has all sections in order', () => {
+    const ids = Array.from(doc.querySelectorAll('main section[id]')).map((s) => s.id);
+    expect(ids).toEqual(['research', 'publications', 'continuity', 'experience', 'talks', 'teaching', 'education', 'awards']);
+  });
+});

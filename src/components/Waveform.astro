@@ -1,0 +1,21 @@
+---
+import { barHeights } from '../lib/waveform';
+
+interface Props { count?: number; seed?: number; played?: number; height?: number; class?: string }
+const { count = 48, seed = 5, played = 0.5, height = 36, class: className } = Astro.props;
+const gap = 6;
+const bars = barHeights(count, seed);
+const width = count * gap;
+---
+<svg class:list={['waveform', className]} viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  {bars.map((h, i) => {
+    const bh = Math.max(2, h * height * 0.92);
+    return <rect x={i * gap + 1} y={(height - bh) / 2} width="3" height={bh} rx="1.5" class={i / count < played ? 'on' : 'off'} />;
+  })}
+</svg>
+
+<style>
+  .waveform { display: block; width: 100%; }
+  .on { fill: var(--wave-on, var(--accent)); }
+  .off { fill: var(--wave-off, var(--wave-rest)); opacity: 0.25; }
+</style>

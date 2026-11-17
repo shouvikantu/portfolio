@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatRange } from '../lib/format';
+
+interface Props { id: string; heading: string; items: CollectionEntry<'experience'>['data'][] }
+const { id, heading, items } = Astro.props;
+---
+<section id={id} class="section" aria-labelledby={`${id}-h`}>
+  <div class="section-head"><h2 id={`${id}-h`}>{heading}</h2></div>
+  <ol class="rows">
+    {items.map((e) => (
+      <li class="row">
+        <span class="row-when">{formatRange(e.start, e.end)}</span>
+        <div class="row-body">
+          <span class="row-title">{e.role}</span>
+          <span class="row-meta">{e.org} · {e.location}</span>
+          <ul class="row-bullets">{e.bullets.map((b) => <li>{b}</li>)}</ul>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
