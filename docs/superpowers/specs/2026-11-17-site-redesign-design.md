@@ -14,7 +14,7 @@ The site is **research-first**. Its main readers are faculty, lab leads, prospec
 - New structure, new look, new code. Nothing from the old template survives except the two pages listed under constraints.
 - Content from the November 2026 CV and the LinkedIn profile, kept up to date.
 - Adding a publication, talk or news item means editing one data file, not markup.
-- Fast and accessible: static HTML, minimal JavaScript, good on phones, respects reduced-motion, dark mode.
+- Fast and accessible: static HTML, minimal JavaScript, good on phones, respects reduced-motion. Light theme only (Shouvik dropped dark mode on 2026-11-17).
 - Correct SEO and link previews for the real production URL.
 
 ## Non-goals
@@ -59,7 +59,6 @@ The site reads like a coded interview transcript with a voice layer on top:
 ### Tokens (from the mockup)
 
 - Light: background `#eef0f4` (cool paper), ink `#17202c`, muted `#5b6875`, rule `#cfd5dd`, accent coral `#e8552f`. Highlighters: yellow `#ffe36e`, green `#a7e8c0`, pink `#ffbfd0`, blue `#bcd7ff`.
-- Dark: designed for real, not inverted. Deep blue-ink background, light ink, the same coral accent adjusted for contrast; highlighters keep dark text on them.
 - Type: **Bricolage Grotesque** (display: name, page titles), **Atkinson Hyperlegible** (body, chosen for readability and its education-accessibility roots), **JetBrains Mono** (timestamps, labels, tags). Self-hosted with Fontsource rather than loaded from Google Fonts.
 
 ## Site structure

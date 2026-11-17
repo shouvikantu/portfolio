@@ -25,7 +25,7 @@ function setupPlayer(root: HTMLElement, reduced: boolean): void {
   const duration = Number(root.dataset.duration ?? 14);
   const seed = Number(root.dataset.seed ?? 3);
   let heights: number[] = [];
-  let colors: Colors = readColors();
+  const colors: Colors = readColors();
   let mode: WaveMode = reduced ? 'idle' : 'intro';
   let modeStart = performance.now();
   let progress = reduced ? 1 : 0;
@@ -128,7 +128,6 @@ function setupPlayer(root: HTMLElement, reduced: boolean): void {
   }
 
   new ResizeObserver(resize).observe(canvas);
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { colors = readColors(); draw(performance.now()); });
 
   root.classList.add('ready');
   if (reduced) {

@@ -67,12 +67,12 @@ describe('head and theme', () => {
     }
   });
 
-  it('defines --mark-ink for both dark-theme selectors', () => {
+  it('is light-only: no dark theme in the CSS or the page head', () => {
     const css = readFileSync('src/styles/tokens.css', 'utf8');
-    const media = css.slice(css.indexOf('prefers-color-scheme: dark'));
-    expect(media.slice(0, media.indexOf('}\n}') + 3)).toMatch(/--mark-ink:/);
-    const attr = css.slice(css.indexOf(':root[data-theme="dark"]'));
-    expect(attr.slice(0, attr.indexOf('}'))).toMatch(/--mark-ink:/);
+    expect(css).not.toMatch(/prefers-color-scheme: dark/);
+    expect(css).not.toMatch(/data-theme="dark"/);
+    expect(doc.querySelector('meta[name="color-scheme"]')?.getAttribute('content')).toBe('light');
+    expect(doc.querySelectorAll('meta[name="theme-color"]').length).toBe(1);
   });
 });
 
@@ -200,12 +200,7 @@ describe('review fixes', () => {
     expect(doc.querySelector('link[rel="canonical"]')).toBeNull();
   });
 
-  it('defines a dark-mode play-icon color', () => {
-    const css = readFileSync('src/styles/tokens.css', 'utf8');
-    expect(css.slice(0, css.indexOf('@media'))).toMatch(/--btn-ink:/);
-    const media = css.slice(css.indexOf('prefers-color-scheme: dark'));
-    expect(media.slice(0, media.indexOf('}\n}') + 3)).toMatch(/--btn-ink:/);
-    const attr = css.slice(css.indexOf(':root[data-theme="dark"]'));
-    expect(attr.slice(0, attr.indexOf('}'))).toMatch(/--btn-ink:/);
+  it('defines the play-icon color token', () => {
+    expect(readFileSync('src/styles/tokens.css', 'utf8')).toMatch(/--btn-ink:/);
   });
 });
