@@ -1,6 +1,3 @@
-# Personal Website
-- Hero Section
-- About Section
-- Skills/Courses Section
-- Resume Section
-- Portfolio Section
+# shouvikantu.com
+
+Personal research site of Shouvik Ahmed Antu, built with Astro.
